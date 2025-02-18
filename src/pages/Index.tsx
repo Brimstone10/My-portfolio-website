@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Download, Building2, GraduationCap, Award, Linkedin, Mail } from 'lucide-react';
+import { Download, Building2, GraduationCap, Award, Linkedin, Mail, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import ProfileSection from '@/components/resume/ProfileSection';
@@ -32,6 +31,7 @@ const Index = () => {
         <meta property="og:image" content="/profile-pic.jpeg" />
         <meta property="og:url" content="https://abhishek.karki.netlify.app/" />
         <meta name="twitter:card" content="summary_large_image" />
+        <link rel="icon" href="/profile-pic.jpeg" type="image/jpeg" />
       </Helmet>
 
       <div className="container mx-auto px-4 py-8">
@@ -52,31 +52,31 @@ const Index = () => {
             </h2>
             <div className="space-y-6">
               <ExperienceItem
-                title="Quality Assurance Engineer"
-                company="Yirifi.ai Pte. Ltd., Singapore"
-                date="June 2024 - January 2025"
-                responsibilities={[
-                  "Test Case Preparation: Creating detailed and comprehensive test cases for various applications",
-                  "Test Data Preparation: Generating test data for various testing scenarios",
-                  "API Testing: Conducting API tests to verify functionality, security, and performance",
-                  "Load Testing: Performing load and stress tests to assess application performance",
-                  "UI Testing: Testing web applications for usability and responsiveness",
-                  "Automation using Selenium (Java in Headless Mode)",
-                  "Requirements Analysis and UAT Report Preparation",
-                  "Web Application Testing: Conducting end-to-end testing"
-                ]}
-              />
-              <ExperienceItem
                 title="Software Engineer I"
                 company="Infinite Computer Solutions (formerly Cotiviti Nepal)"
                 date="September 2023 - Present"
                 responsibilities={[
-                  "Conducted comprehensive API testing using Postman for DxCG healthcare analytics application",
-                  "Performed manual testing and result validation using Beyond Compare",
-                  "Implemented detailed regression testing plans across different environments and databases",
-                  "Conducted performance testing for system scalability evaluation",
-                  "Key role in testing containerized DxCG 6.3 version",
-                  "Collaborated in SAFe environment and delivered product demos to stakeholders"
+                  <><Search className="inline w-4 h-4 mr-2" />Conducted comprehensive API testing using Postman for DxCG healthcare analytics application</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Performed manual testing and result validation using Beyond Compare</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Implemented detailed regression testing plans across different environments and databases</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Conducted performance testing for system scalability evaluation</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Key role in testing containerized DxCG 6.3 version</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Collaborated in SAFe environment and delivered product demos to stakeholders</>
+                ]}
+              />
+               <ExperienceItem
+                title="Quality Assurance Engineer"
+                company="Yirifi.ai Pte. Ltd."
+                date="Freelance"
+                responsibilities={[
+                  <><Search className="inline w-4 h-4 mr-2" />Test Case Preparation: Creating detailed and comprehensive test cases for various applications</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Test Data Preparation: Generating test data for various testing scenarios</>,
+                  <><Search className="inline w-4 h-4 mr-2" />API Testing: Conducting API tests to verify functionality, security, and performance</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Load Testing: Performing load and stress tests to assess application performance</>,
+                  <><Search className="inline w-4 h-4 mr-2" />UI Testing: Testing web applications for usability and responsiveness</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Automation using Selenium (Java in Headless Mode)</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Requirements Analysis and UAT Report Preparation</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Web Application Testing: Conducting end-to-end testing</>
                 ]}
               />
               <ExperienceItem
@@ -84,11 +84,11 @@ const Index = () => {
                 company="TechnoFex Nepal Pvt Ltd"
                 date="April 2022 - August 2023"
                 responsibilities={[
-                  "Implemented UI automation testing using Selenium C# with XUnit and POM framework",
-                  "Performed API testing using Postman and Swagger",
-                  "Conducted cross-browser testing using BrowserStack",
-                  "Managed bug tracking on Azure DevOps",
-                  "Provided training and knowledge sharing sessions to interns"
+                  <><Search className="inline w-4 h-4 mr-2" />Implemented UI automation testing using Selenium C# with XUnit and POM framework</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Performed API testing using Postman and Swagger</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Conducted cross-browser testing using BrowserStack</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Managed bug tracking on Azure DevOps</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Provided training and knowledge sharing sessions to interns</>
                 ]}
               />
               <ExperienceItem
@@ -96,10 +96,10 @@ const Index = () => {
                 company="Citytech"
                 date="November 2021 - April 2022"
                 responsibilities={[
-                  "Handled FinPRO and TradePulse projects for major banks",
-                  "Served as Scrum Master, managing sprint planning and ceremonies",
-                  "Created and maintained test cases and project documentation",
-                  "Performed testing across QAT, QA, and staging environments"
+                  <><Search className="inline w-4 h-4 mr-2" />Handled FinPRO and TradePulse projects for major banks</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Served as Scrum Master, managing sprint planning and ceremonies</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Created and maintained test cases and project documentation</>,
+                  <><Search className="inline w-4 h-4 mr-2" />Performed testing across QAT, QA, and staging environments</>
                 ]}
               />
             </div>
@@ -189,14 +189,33 @@ const Index = () => {
                   Certifications & Recognition
                 </h3>
                 <div className="space-y-4">
-                  <p className="text-purple-200">ISTQB Advanced Test Automation Engineer Certification</p>
+                  <div>
+                    <a 
+                      href="https://www.udemy.com/certificate/UC-4f30fbb1-23de-40d8-98f0-01a9882d9832/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-200 hover:text-purple-100 transition-colors underline"
+                    >
+                      ISTQB Advanced Test Automation Engineer Certification
+                    </a>
+                  </div>
+                  <div>
+                    <a 
+                      href="https://www.udemy.com/certificate/UC-453bee3d-2139-4a36-89b1-5a3a8d715ab5/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-200 hover:text-purple-100 transition-colors underline"
+                    >
+                      Mastering Functional Testing with Generative AI
+                    </a>
+                  </div>
                   <div>
                     <h4 className="font-semibold mb-2">Featured on United Academy's LinkedIn</h4>
                     <a 
                       href="https://www.linkedin.com/posts/unitedacademynepal_alumniacheivement-unitedacademy-unitedacademynepal-activity-7237365923920150528-LXHv"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-purple-200 hover:text-purple-100 transition-colors flex items-center gap-2"
+                      className="text-purple-200 hover:text-purple-100 transition-colors flex items-center gap-2 underline"
                     >
                       <Linkedin className="w-4 h-4" />
                       View Featured Post
@@ -221,7 +240,7 @@ const Index = () => {
               <p className="text-purple-200 mb-2">Project Manager and InfoSecOps Lead</p>
               <a 
                 href="mailto:adhikari.prajwal678@gmail.com" 
-                className="text-purple-200 hover:text-purple-100 transition-colors flex items-center gap-2"
+                className="text-purple-200 hover:text-purple-100 transition-colors flex items-center gap-2 underline"
               >
                 <Mail className="w-4 h-4" />
                 adhikari.prajwal678@gmail.com
@@ -246,6 +265,11 @@ const Index = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="text-center py-4">
+        <p className="text-purple-200">&copy; {new Date().getFullYear()} Abhishek Karki. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
