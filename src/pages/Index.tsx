@@ -1,7 +1,12 @@
+
 import React from 'react';
-import { Mail, Phone, MapPin, Linkedin, Download, Building2, GraduationCap, Award } from 'lucide-react';
+import { Download, Building2, GraduationCap, Award, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
+import ProfileSection from '@/components/resume/ProfileSection';
+import ExperienceItem from '@/components/resume/ExperienceItem';
+import SkillsGroup from '@/components/resume/SkillsGroup';
+import EducationItem from '@/components/resume/EducationItem';
 
 const Index = () => {
   const handleDownload = () => {
@@ -31,56 +36,7 @@ const Index = () => {
 
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-12">
-          {/* Profile Card */}
-          <motion.div 
-            className="relative bg-gradient-to-br from-purple-900 to-blue-900 rounded-3xl p-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex flex-col items-center text-center">
-              <motion.div 
-                className="w-40 h-40 rounded-3xl overflow-hidden mb-6 bg-gradient-to-r from-purple-500 to-blue-500 p-1"
-                initial={{ scale: 0.8 }}
-                animate={{ scale: 1 }}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <img
-                  src="/profile-pic.jpeg"
-                  alt="Abhishek Karki"
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <h1 className="text-4xl font-bold mb-2">Abhishek Karki</h1>
-                <h2 className="text-xl text-purple-200 mb-6">Quality Assurance Engineer</h2>
-                
-                <div className="flex flex-wrap justify-center gap-4 mb-6">
-                  <ContactItem icon={Mail} text="brtabhishek10@gmail.com" href="mailto:brtabhishek10@gmail.com" />
-                  <ContactItem icon={Phone} text="+977 9814363802" href="tel:+9779814363802" />
-                  <ContactItem icon={MapPin} text="Lazimpat, Kathmandu" />
-                  <ContactItem 
-                    icon={Linkedin} 
-                    text="LinkedIn" 
-                    href="https://www.linkedin.com/in/abhishek-karki-882076219/"
-                    external={true}
-                  />
-                </div>
-                
-                <p className="text-purple-200">
-                  With a robust understanding of testing methodologies and the software development lifecycle, 
-                  I excel in leveraging AI and emerging technologies to enhance quality assurance processes. 
-                  My strong analytical skills and meticulous attention to detail enable me to effectively integrate 
-                  innovative solutions, such as AI-driven test automation, to optimize test coverage and accuracy.
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
+          <ProfileSection />
 
           {/* Experience Section */}
           <motion.section 
@@ -204,7 +160,11 @@ const Index = () => {
               Education & Certifications
             </h2>
             <div className="space-y-6">
-              <div className="bg-white/5 rounded-xl p-6">
+              <motion.div 
+                className="bg-white/5 rounded-xl p-6"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
                 <h3 className="text-xl font-bold mb-4">Education</h3>
                 <div className="space-y-4">
                   <EducationItem
@@ -218,26 +178,32 @@ const Index = () => {
                     date="2018 - 2022"
                   />
                 </div>
-              </div>
-              <div className="bg-white/5 rounded-xl p-6">
+              </motion.div>
+              <motion.div 
+                className="bg-white/5 rounded-xl p-6"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
                 <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                   <Award className="w-6 h-6" />
                   Certifications & Recognition
                 </h3>
-                <p className="text-purple-200">ISTQB Advanced Test Automation Engineer Certification</p>
-                <div>
-                  <h4 className="font-semibold mb-2">Featured on United Academy's LinkedIn</h4>
-                  <a 
-                    href="https://www.linkedin.com/posts/unitedacademynepal_alumniacheivement-unitedacademy-unitedacademynepal-activity-7237365923920150528-LXHv"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-200 hover:text-purple-100 transition-colors flex items-center gap-2"
-                  >
-                    <Linkedin className="w-4 h-4" />
-                    View Featured Post
-                  </a>
+                <div className="space-y-4">
+                  <p className="text-purple-200">ISTQB Advanced Test Automation Engineer Certification</p>
+                  <div>
+                    <h4 className="font-semibold mb-2">Featured on United Academy's LinkedIn</h4>
+                    <a 
+                      href="https://www.linkedin.com/posts/unitedacademynepal_alumniacheivement-unitedacademy-unitedacademynepal-activity-7237365923920150528-LXHv"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-200 hover:text-purple-100 transition-colors flex items-center gap-2"
+                    >
+                      <Linkedin className="w-4 h-4" />
+                      View Featured Post
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </motion.section>
 
@@ -283,95 +249,5 @@ const Index = () => {
     </div>
   );
 };
-
-const ContactItem = ({ 
-  icon: Icon, 
-  text, 
-  href, 
-  external 
-}: { 
-  icon: any; 
-  text: string; 
-  href?: string; 
-  external?: boolean;
-}) => {
-  const content = (
-    <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 hover:bg-white/15 transition-colors">
-      <Icon className="w-4 h-4" />
-      <span className="text-sm">{text}</span>
-    </div>
-  );
-
-  if (href) {
-    return (
-      <a 
-        href={href} 
-        target={external ? "_blank" : undefined}
-        rel={external ? "noopener noreferrer" : undefined}
-      >
-        {content}
-      </a>
-    );
-  }
-
-  return content;
-};
-
-const ExperienceItem = ({ 
-  title, 
-  company, 
-  date,
-  responsibilities 
-}: { 
-  title: string; 
-  company: string; 
-  date: string;
-  responsibilities: string[];
-}) => (
-  <div className="flex gap-4">
-    <div className="w-3 h-3 rounded-full bg-purple-500 mt-2" />
-    <div className="flex-1 bg-white/5 rounded-xl p-6">
-      <h3 className="text-xl font-semibold">{title}</h3>
-      <p className="text-purple-200 mb-2">{company}</p>
-      <p className="text-sm text-purple-300 mb-4">{date}</p>
-      <ul className="list-disc list-inside text-purple-200 space-y-2">
-        {responsibilities.map((item, index) => (
-          <li key={index} className="text-sm">{item}</li>
-        ))}
-      </ul>
-    </div>
-  </div>
-);
-
-const SkillsGroup = ({ title, skills }: { title: string; skills: string[] }) => (
-  <div>
-    <h3 className="text-xl font-semibold mb-4">{title}</h3>
-    <div className="space-y-2">
-      {skills.map((skill, index) => (
-        <div key={index} className="bg-white/5 rounded-xl px-4 py-3 text-purple-200">
-          {skill}
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const EducationItem = ({ 
-  degree, 
-  institution, 
-  date,
-  status 
-}: { 
-  degree: string; 
-  institution: string; 
-  date?: string;
-  status?: string;
-}) => (
-  <div className="border-l-2 border-purple-500 pl-4">
-    <h4 className="font-semibold text-lg">{degree}</h4>
-    <p className="text-purple-200">{institution}</p>
-    <p className="text-purple-300 text-sm">{status || date}</p>
-  </div>
-);
 
 export default Index;
