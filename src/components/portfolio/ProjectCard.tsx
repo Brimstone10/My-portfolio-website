@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { ExternalLink, GitHub } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 
 interface ProjectCardProps {
   title: string;
@@ -89,7 +89,7 @@ const ProjectCard = ({
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-purple-200 hover:text-white transition-colors"
             >
-              <GitHub className="w-4 h-4" />
+              <Github className="w-4 h-4" />
               View Code
             </a>
           )}
