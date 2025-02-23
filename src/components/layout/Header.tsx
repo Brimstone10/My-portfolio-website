@@ -1,7 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-scroll';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,10 +16,12 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home', href: 'home' },
+    { name: 'About', href: 'about' },
+    { name: 'Skills', href: 'skills' },
+    { name: 'Education', href: 'education' },
+    { name: 'Portfolio', href: 'portfolio' },
+    { name: 'Contact', href: 'contact' }
   ];
 
   return (
@@ -37,7 +39,7 @@ const Header = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            AK
+            Abhishek Karki
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -45,13 +47,15 @@ const Header = () => {
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
-                href={item.href}
+                href={`#${item.href}`}
                 className="text-white/90 hover:text-white transition-colors"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                {item.name}
+                <Link to={item.href} smooth={true} duration={500} className="cursor-pointer">
+                  {item.name}
+                </Link>
               </motion.a>
             ))}
           </nav>
@@ -79,11 +83,13 @@ const Header = () => {
                 {navItems.map((item) => (
                   <a
                     key={item.name}
-                    href={item.href}
+                    href={`#${item.href}`}
                     className="text-white/90 hover:text-white transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    {item.name}
+                    <Link to={item.href} smooth={true} duration={500} className="cursor-pointer">
+                      {item.name}
+                    </Link>
                   </a>
                 ))}
               </div>

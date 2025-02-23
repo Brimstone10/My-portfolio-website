@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Download, Building2, GraduationCap, Award, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -26,13 +25,31 @@ const Index = () => {
   // Updated project data with Kiibank and Global IME Bank
   const projects = [
     {
-      title: "Kiibank Project",
+      title: "DxCG Intelligence, Licence Server and Usage log Viewer ",
+      description: "Comprehensive testing solution for DxCG healthcare analytics application",
+      problem: "Need for robust testing of complex healthcare data processing system",
+      approach: "Implemented detailed API testing and regression testing plans",
+      tools: ["Postman", "Beyond Compare", "Docker"],
+      outcome: "Successfully validated containerized DxCG 6.3 version",
+      image: "/healthcare-analytics.jpg"
+    },
+    {
+      title: "YIRIFI.AI",
+      description: "Digital Assets Compliance and Monitoring Platform",
+      problem: "End to end testing of the platform with automation",
+      approach: "Implemented test plans, test cases and automation scripts",
+      tools: ["Swagger", "Selenium", "Docker"],
+      outcome: "Successfully verified and deployed the application with high quality standards in production",
+      image: "/yirifi.jpg"
+    },
+    {
+      title: "Kiibank Web & Mobile App",
       description: "Comprehensive banking solution with web and mobile applications",
       problem: "Need for a modern, user-friendly banking platform accessible via web and mobile",
       approach: "Implemented thorough testing strategies for both web and mobile applications",
       tools: ["Selenium", "Appium", "Postman", "TestNG", "Jenkins"],
       outcome: "Successfully validated and deployed both web and mobile applications with high quality standards",
-      image: "/photo-1488590528505-98d2b5aba04b"
+      image: "/kiibank-image.jpg"
     },
     {
       title: "Global IME Bank Web Portal",
@@ -41,17 +58,9 @@ const Index = () => {
       approach: "Conducted extensive testing of web portal functionality and security features",
       tools: ["Selenium", "JMeter", "Postman", "Azure DevOps"],
       outcome: "Ensured secure and reliable banking operations through comprehensive testing",
-      image: "/photo-1519389950473-47ba0277781c"
+      image: "/ime.jpg"
     },
-    {
-      title: "Healthcare Analytics Testing",
-      description: "Comprehensive testing solution for DxCG healthcare analytics application",
-      problem: "Need for robust testing of complex healthcare data processing system",
-      approach: "Implemented detailed API testing and regression testing plans",
-      tools: ["Postman", "Beyond Compare", "Docker"],
-      outcome: "Successfully validated containerized DxCG 6.3 version",
-      image: "/project1.jpg"
-    }
+    
   ];
 
   return (
@@ -149,7 +158,7 @@ const Index = () => {
               </div>
 
               {/* Skills Section */}
-              <div className="bg-gradient-to-br from-purple-900/50 to-blue-900/50 rounded-3xl p-8">
+              <div id="skills" className="bg-gradient-to-br from-purple-900/50 to-blue-900/50 rounded-3xl p-8">
                 <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
                   <Building2 className="w-8 h-8" />
                   Skills & Tools
@@ -181,6 +190,79 @@ const Index = () => {
                       "BrowserStack",
                     ]}
                   />
+                </div>
+              </div>
+
+              {/* Education & Certifications Section */}
+              <div id="education" className="bg-gradient-to-br from-purple-900/50 to-blue-900/50 rounded-3xl p-8">
+                <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+                  <GraduationCap className="w-8 h-8" />
+                  Education & Certifications
+                </h2>
+                <div className="space-y-6">
+                  <motion.div 
+                    className="bg-white/5 rounded-xl p-6"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <h3 className="text-xl font-bold mb-4">Education</h3>
+                    <div className="space-y-4">
+                      <EducationItem
+                        degree="International Masters in Business Administration"
+                        institution="University of Wolverhampton (Herald College Kathmandu)"
+                        status="Ongoing"
+                      />
+                      <EducationItem
+                        degree="BSc (Hons) Computer Science"
+                        institution="University of Wolverhampton (Herald College Kathmandu)"
+                        date="2018 - 2022"
+                      />
+                    </div>
+                  </motion.div>
+                  <motion.div 
+                    className="bg-white/5 rounded-xl p-6"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                      <Award className="w-6 h-6" />
+                      Certifications & Recognition
+                    </h3>
+                    <div className="space-y-4">
+                      <div>
+                        <a 
+                          href="https://www.udemy.com/certificate/UC-4f30fbb1-23de-40d8-98f0-01a9882d9832/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-purple-200 hover:text-purple-100 transition-colors underline"
+                        >
+                          ISTQB Advanced Test Automation Engineer Certification
+                        </a>
+                      </div>
+                      <div>
+                        <a 
+                          href="https://www.udemy.com/certificate/UC-453bee3d-2139-4a36-89b1-5a3a8d715ab5/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-purple-200 hover:text-purple-100 transition-colors underline"
+                        >
+                          Mastering Functional Testing with Generative AI
+                        </a>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2">Featured on United Academy's LinkedIn</h4>
+                        <a 
+                          href="https://www.linkedin.com/posts/unitedacademynepal_alumniacheivement-unitedacademy-unitedacademynepal-activity-7237365923920150528-LXHv"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-purple-200 hover:text-purple-100 transition-colors flex items-center gap-2 underline"
+                        >
+                          <Linkedin className="w-4 h-4" />
+                          View Featured Post
+                        </a>
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
@@ -246,6 +328,11 @@ const Index = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="text-center py-4">
+        <p className="text-purple-200">&copy; {new Date().getFullYear()} Abhishek Karki. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
