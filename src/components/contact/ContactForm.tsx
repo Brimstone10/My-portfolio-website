@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
 import { useToast } from "@/components/ui/use-toast";
+import { supabase } from '@/lib/supabaseClient';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -10,16 +11,43 @@ const ContactForm = () => {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically handle form submission
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            created_at: new Date().toISOString(),
+          }
+        ]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -39,6 +67,7 @@ const ContactForm = () => {
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
           required
+          disabled={isSubmitting}
         />
       </div>
       <div>
@@ -50,6 +79,7 @@ const ContactForm = () => {
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
           required
+          disabled={isSubmitting}
         />
       </div>
       <div>
@@ -60,16 +90,18 @@ const ContactForm = () => {
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 h-32"
           required
+          disabled={isSubmitting}
         />
       </div>
       <motion.button
         type="submit"
-        className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+        className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
+        disabled={isSubmitting}
       >
         <Send className="w-4 h-4" />
-        Send Message
+        {isSubmitting ? 'Sending...' : 'Send Message'}
       </motion.button>
     </motion.form>
   );
