@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Download, Building2, GraduationCap, Award, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -22,8 +23,26 @@ const Index = () => {
     document.body.removeChild(link);
   };
 
-  // Sample project data - replace with actual projects
+  // Updated project data with Kiibank and Global IME Bank
   const projects = [
+    {
+      title: "Kiibank Project",
+      description: "Comprehensive banking solution with web and mobile applications",
+      problem: "Need for a modern, user-friendly banking platform accessible via web and mobile",
+      approach: "Implemented thorough testing strategies for both web and mobile applications",
+      tools: ["Selenium", "Appium", "Postman", "TestNG", "Jenkins"],
+      outcome: "Successfully validated and deployed both web and mobile applications with high quality standards",
+      image: "/photo-1488590528505-98d2b5aba04b"
+    },
+    {
+      title: "Global IME Bank Web Portal",
+      description: "Web-based banking portal for comprehensive banking services",
+      problem: "Required robust testing of complex banking transactions and user interactions",
+      approach: "Conducted extensive testing of web portal functionality and security features",
+      tools: ["Selenium", "JMeter", "Postman", "Azure DevOps"],
+      outcome: "Ensured secure and reliable banking operations through comprehensive testing",
+      image: "/photo-1519389950473-47ba0277781c"
+    },
     {
       title: "Healthcare Analytics Testing",
       description: "Comprehensive testing solution for DxCG healthcare analytics application",
@@ -31,9 +50,8 @@ const Index = () => {
       approach: "Implemented detailed API testing and regression testing plans",
       tools: ["Postman", "Beyond Compare", "Docker"],
       outcome: "Successfully validated containerized DxCG 6.3 version",
-      image: "/project1.jpg" // Add actual project images
-    },
-    // Add more projects as needed
+      image: "/project1.jpg"
+    }
   ];
 
   return (
